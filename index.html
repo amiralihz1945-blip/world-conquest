@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Conquest</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="status-bar">
+        <div class="time-block">7:20</div>
+        <div class="status-icons">
+          <span class="status-pill">VPN</span>
+          <span class="status-pill">5G</span>
+          <span class="status-pill">89</span>
+        </div>
+      </header>
+
+      <main class="game-screen">
+        <div class="map-frame">
+          <div class="hud-topbar">
+            <div class="brand-group">
+              <div class="brand-mark">W</div>
+              <span>World Conquest</span>
+            </div>
+
+            <div class="top-actions">
+              <button class="mini-button" aria-label="Pause">⏸</button>
+              <button class="mini-button active" aria-label="Play">▶</button>
+              <button class="mini-button">1x</button>
+              <button class="mini-button">2x</button>
+            </div>
+
+            <div class="top-icons">
+              <button class="panel-icon" aria-label="Menu">☰</button>
+              <button class="panel-icon" aria-label="Diplomacy">⚑</button>
+              <button class="panel-icon" aria-label="Build">🛠</button>
+              <button class="panel-icon" aria-label="Settings">⚙</button>
+            </div>
+          </div>
+
+          <div class="map-wrapper">
+            <div id="mapViewport" class="map-viewport">
+              <svg id="mapSvg" viewBox="0 0 1600 860" preserveAspectRatio="xMidYMid meet" aria-label="World Conquest strategy map">
+                <defs>
+                  <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="rgba(0,0,0,0.6)" />
+                  </filter>
+                  <linearGradient id="oceanGrad" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#133f69" />
+                    <stop offset="100%" stop-color="#0a1d38" />
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="1600" height="860" fill="url(#oceanGrad)" />
+                <g id="mapRoot"></g>
+              </svg>
+            </div>
+
+            <div class="zoom-controls" aria-label="Map controls">
+              <button id="zoomInBtn" aria-label="Zoom in">+</button>
+              <button id="zoomOutBtn" aria-label="Zoom out">−</button>
+              <button id="resetViewBtn" aria-label="Reset view">⌂</button>
+            </div>
+
+            <aside class="selection-panel">
+              <div class="panel-header">Selected</div>
+              <div class="panel-body">
+                <h3 id="selectedName">World</h3>
+                <p id="selectedMeta">Campaign overview</p>
+                <div class="stat-grid" id="statGrid"></div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="bottom-toolbar">
+            <button class="tool-button active">Map</button>
+            <button class="tool-button">Cities</button>
+            <button class="tool-button">Economy</button>
+            <button class="tool-button">Military</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
